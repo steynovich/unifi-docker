@@ -24,6 +24,8 @@ release:
   stage: release
   except:
   - master
+  only:
+  - tags
   script:
     - echo "Releasing to $CONTAINER_RELEASE_IMAGE"
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
