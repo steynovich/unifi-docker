@@ -14,6 +14,7 @@ before_script:
 build:
   stage: build
   script:
+    - echo "Building $CONTAINER_TEST_IMAGE"
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker build --rm -t $CONTAINER_TEST_IMAGE .
     - docker push $CONTAINER_TEST_IMAGE
@@ -23,6 +24,7 @@ release:
   except:
   - master
   script:
+    - echo "Releasing to $CONTAINER_RELEASE_IMAGE"
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker pull $CONTAINER_TEST_IMAGE
     - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
