@@ -20,7 +20,8 @@ build:
 
 release:
   stage: release
-  except: master
+  except:
+  - master
   script:
     - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - docker pull $CONTAINER_TEST_IMAGE
