@@ -20,7 +20,7 @@ RUN echo "deb http://http.debian.net/debian stretch main contrib non-free" \
     apt-get -q clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV UNIFI_URL "https://www.ubnt.com/downloads/unifi/5.5.6-b559495f0c/unifi_sysvinit_all.deb"
+ENV UNIFI_URL "https://www.ubnt.com/downloads/unifi/5.5.7-0cbda0cd4a/unifi_sysvinit_all.deb"
 
 RUN curl -Lo unifi_sysvinit_all.deb "${UNIFI_URL}" && \
     dpkg -i unifi_sysvinit_all.deb && \
