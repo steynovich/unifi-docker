@@ -16,11 +16,11 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
 RUN echo "deb http://http.debian.net/debian stretch main contrib non-free" \
     > /etc/apt/sources.list.d/stretch.list && \
     apt-get -q update && \
-    apt-get install -qy --force-yes curl openjdk-8-jre-headless binutils jsvc mongodb-10gen && \
+    apt-get install -qy curl openjdk-8-jre-headless binutils jsvc mongodb-10gen && \
     apt-get -q clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV UNIFI_URL "https://www.ubnt.com/downloads/unifi/5.5.11-5107276ec2/unifi_sysvinit_all.deb"
+ENV UNIFI_URL "https://www.ubnt.com/downloads/unifi/5.6.4-c3f780a99//unifi_sysvinit_all.deb"
 
 RUN curl -Lo unifi_sysvinit_all.deb "${UNIFI_URL}" && \
     dpkg -i unifi_sysvinit_all.deb && \
