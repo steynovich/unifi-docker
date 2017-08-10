@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 MAINTAINER github@steynhuizinga.nl
 
@@ -20,7 +20,7 @@ RUN echo "deb http://http.debian.net/debian stretch main contrib non-free" \
     apt-get -q clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV UNIFI_URL "https://www.ubnt.com/downloads/unifi/5.6.12-d503e7daad/unifi_sysvinit_all.deb"
+ENV UNIFI_URL "https://www.ubnt.com/downloads/unifi/5.6.14-f7a900184a/unifi_sysvinit_all.deb"
 
 RUN curl -Lo unifi_sysvinit_all.deb "${UNIFI_URL}" && \
     dpkg -i unifi_sysvinit_all.deb && \
