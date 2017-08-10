@@ -9,14 +9,17 @@ ENV DEBIAN_FRONTEND noninteractive
 # Add mongodb repo
 RUN echo "deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen" \
     > /etc/apt/sources.list.d/21mongodb.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+RUN apt-get -q update && \
+    apt-get install -qy gnupg && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10 && \
+    apt-get -q clean
 
 # Install mongodb, openjdk, etc
 RUN echo "deb http://http.debian.net/debian stretch main contrib non-free" \
     > /etc/apt/sources.list.d/stretch.list && \
     apt-get -q update && \
-    apt-get install -qy curl openjdk-8-jre-headless binutils jsvc mongodb-10gen && \
+    apt-get install --allow-unauthenticated -qy curl openjdk-8-jre-headless binutils jsvc mongodb-10gen libcap2 procps && \
     apt-get -q clean && \
     rm -rf /var/lib/apt/lists/*
 
