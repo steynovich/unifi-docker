@@ -2,7 +2,7 @@ image: docker:latest
 
 variables:
   IMAGE_TAG: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
-  CONTAINER_RELEASE_IMAGE: ${REGISTRY}/${CI_PROJECT_NAME}:${CI_BUILD_TAG}
+  CONTAINER_RELEASE_IMAGE: steynovich/unifi:${CI_BUILD_TAG}
 
 stages:
   - build
