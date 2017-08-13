@@ -7,7 +7,6 @@ variables:
 stages:
   - build
   - release
-  - cleanup
 
 before_script:
   - docker info
@@ -29,9 +28,3 @@ release:
     - docker pull $IMAGE_TAG
     - docker tag $IMAGE_TAG $CONTAINER_RELEASE_IMAGE
     - docker push $CONTAINER_RELEASE_IMAGE
-
-cleanup_job:
-  stage: cleanup
-  script:
-  - docker rmi $IMAGE_TAG $CONTAINER_RELEASE_IMAGE
-  when: always
