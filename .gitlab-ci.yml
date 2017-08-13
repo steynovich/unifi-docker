@@ -26,6 +26,6 @@ release:
   script:
     - echo "Building $CONTAINER_RELEASE_IMAGE"
     - docker pull $IMAGE_TAG
-    - docker logout
+    - docker logout $CI_REGISTRY
     - docker tag $IMAGE_TAG $CONTAINER_RELEASE_IMAGE
     - docker push $CONTAINER_RELEASE_IMAGE
