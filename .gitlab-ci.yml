@@ -24,8 +24,9 @@ release:
   only:
     - tags
   script:
-    - echo "Building $CONTAINER_RELEASE_IMAGE"
+    - echo "Releasing $CONTAINER_RELEASE_IMAGE"
     - docker pull $IMAGE_TAG
-    - docker logout $CI_REGISTRY
+    - echo "Login at Docker Hub"
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker tag $IMAGE_TAG $CONTAINER_RELEASE_IMAGE
     - docker push $CONTAINER_RELEASE_IMAGE
