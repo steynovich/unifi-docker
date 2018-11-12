@@ -11,8 +11,6 @@ RUN echo "deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10ge
     > /etc/apt/sources.list.d/21mongodb.list
 RUN apt-get -q update && \
     apt-get install -qy gnupg && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10 && \
     apt-get -q clean
 
 # Install mongodb, openjdk, etc
